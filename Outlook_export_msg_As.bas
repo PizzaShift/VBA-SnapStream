@@ -1,3 +1,4 @@
+'http://www.vbaexpress.com/forum/showthread.php?65485-Complex-outlook-email-export-macro
 Option Explicit
 
 Private wdApp As Object
