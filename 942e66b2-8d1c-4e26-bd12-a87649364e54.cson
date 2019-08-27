@@ -1,0 +1,29 @@
+createdAt: "2019-08-21T02:02:21.071Z"
+updatedAt: "2019-08-21T02:02:32.858Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Add Header/Footer Date"
+tags: []
+description: "Add Header/Footer Date"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub dateInHeader()
+      With ActiveSheet.PageSetup
+      .LeftHeader = ""
+      .CenterHeader = "&D"
+      .RightHeader = ""
+      .LeftFooter = ""
+      .CenterFooter = ""
+      .RightFooter = ""
+      End With
+      ActiveWindow.View = xlNormalView
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

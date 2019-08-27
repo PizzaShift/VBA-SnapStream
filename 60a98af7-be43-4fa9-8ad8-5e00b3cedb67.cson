@@ -1,0 +1,26 @@
+createdAt: "2019-08-21T03:23:01.665Z"
+updatedAt: "2019-08-21T03:23:23.857Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Finding the Position of @ in Email Address"
+tags: []
+description: '''
+  Finding the Position of @ in Email Address
+  
+'''
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Function FindPosition(Ref As Range) As Integer
+      Dim Position As Integer
+      Position = InStr(1, Ref, "@")
+      FindPosition = Position
+      End Function
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

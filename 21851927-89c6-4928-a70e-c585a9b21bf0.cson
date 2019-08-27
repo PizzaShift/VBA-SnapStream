@@ -1,0 +1,27 @@
+createdAt: "2019-08-21T02:30:01.447Z"
+updatedAt: "2019-08-21T02:30:21.655Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Refresh All Pivot Tables"
+tags: [
+  "Pivot_Tables"
+  "Refresh"
+]
+description: "Refresh All Pivot Tables"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub CloseAllWorkbooks()
+      Dim wbs As Workbook
+      For Each wbs In Workbooks
+      wbs.Close SaveChanges:=True
+      Next wb
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

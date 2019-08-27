@@ -1,0 +1,31 @@
+createdAt: "2019-08-21T03:13:55.697Z"
+updatedAt: "2019-08-21T03:14:17.143Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Multiply all the Values by a Number"
+tags: [
+  "Multiply_all_the_Values_by_a_Number"
+]
+description: "Multiply all the Values by a Number"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub multiplyWithNumber()
+      Dim rng As Range
+      Dim c As Integer c = InputBox("Enter number to multiple",
+      "Input Required")
+      For Each rng In Selection
+      If WorksheetFunction.IsNumber(rng) Then
+      rng.Value = rng * c
+      Else
+      End If
+      Next rng
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

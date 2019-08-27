@@ -1,0 +1,23 @@
+createdAt: "2019-08-21T03:06:47.477Z"
+updatedAt: "2019-08-21T03:07:04.820Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Activate R1C1 Reference Style"
+tags: [
+  "Activate_R1C1"
+]
+description: "Activate R1C1 Reference Style"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub DataForm()
+      ActiveSheet.ShowDataForm
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

@@ -1,0 +1,25 @@
+createdAt: "2019-08-21T02:13:36.516Z"
+updatedAt: "2019-08-21T02:13:52.230Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Highlight Difference in Columns"
+tags: [
+  "Difference_in_Columns"
+]
+description: "Highlight Difference in Columns"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub columnDifference()
+      Range("H7:H8,I7:I8").Select
+      Selection.ColumnDifferences(ActiveCell).Select
+      Selection.Style= "Bad"
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

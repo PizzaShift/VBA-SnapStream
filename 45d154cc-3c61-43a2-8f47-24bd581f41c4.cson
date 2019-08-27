@@ -1,0 +1,22 @@
+createdAt: "2019-08-21T02:09:44.731Z"
+updatedAt: "2019-08-21T02:09:53.524Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Highlight Cells with Comments"
+tags: []
+description: "Highlight Cells with Comments"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub highlightCommentCells()
+      Selection.SpecialCells(xlCellTypeComments).Select
+      Selection.Style= "Note"
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

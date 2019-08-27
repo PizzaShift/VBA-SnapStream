@@ -1,0 +1,34 @@
+createdAt: "2019-08-21T02:17:17.769Z"
+updatedAt: "2019-08-21T02:17:34.296Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Print Custom Pages"
+tags: []
+description: "Print Custom Pages"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub printCustomSelection()
+      Dim startpageAs Integer
+      Dim endpageAs Integer
+      startpage= InputBox("Please Enter Start Page number.", "Enter Value")
+      If Not WorksheetFunction.IsNumber(startpage) Then
+      MsgBox"Invalid Start Page number. Please try again.", "Error"
+      Exit Sub
+      End If
+      endpage= InputBox("Please Enter End Page number.", "Enter Value")
+      If Not WorksheetFunction.IsNumber(endpage) Then
+      MsgBox"Invalid End Page number. Please try again.", "Error"
+      Exit Sub
+      End If
+      Selection.PrintOutFrom:=startpage, To:=endpage, Copies:=1
+      Collate:=True
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

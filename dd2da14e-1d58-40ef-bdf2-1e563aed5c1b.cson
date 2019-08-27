@@ -1,0 +1,34 @@
+createdAt: "2019-08-21T02:55:53.974Z"
+updatedAt: "2019-08-21T02:56:10.465Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Save Selected Range as a PDF"
+tags: [
+  "Range_as_a_PDF"
+]
+description: "Save Selected Range as a PDF"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub HideSubtotals()
+      Dim pt As PivotTable
+      Dim pf As PivotField
+      On Error Resume Next
+      Set pt = ActiveSheet.PivotTables(ActiveCell.PivotTable.n ame)
+      If pt Is Nothing Then
+      MsgBox "You must place your cursor inside of a PivotTable."
+      Exit Sub
+      End If
+      For Each pf In pt.PivotFields
+      pf.Subtotals(1) = True
+      pf.Subtotals(1) = False
+      Next pf
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

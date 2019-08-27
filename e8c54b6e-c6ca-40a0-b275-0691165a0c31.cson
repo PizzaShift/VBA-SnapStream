@@ -1,0 +1,1428 @@
+createdAt: "2019-08-22T08:04:24.655Z"
+updatedAt: "2019-08-22T08:19:12.451Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Fuzzy Match By Word Functions Returns %"
+tags: [
+  "Fuzzy_Match"
+  "Word_Match"
+  "Phrase_Match"
+]
+description: '''
+  Fuzzy Match By Word Functions Returns %
+  
+  
+'''
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Function FuzzyMatchByWord(ByVal lsPhrase1 As String, ByVal lsPhrase2 As String, Optional lbStripVowels As Boolean = False, Optional lbDiscardExtra As Boolean = False) As Double
+      
+      '
+      ' Compare two phrases and return a similarity value (between 0 and 100).
+      '
+      ' Arguments:
+      '
+      ' 1. Phrase1        String; any text string
+      ' 2. Phrase2        String; any text string
+      ' 3. StripVowels    Optional to strip all vowels from the phrases
+      ' 4. DiscardExtra   Optional to discard any unmatched words
+      '
+         
+          'local variables
+          Dim lsWord1() As String
+          Dim lsWord2() As String
+          Dim ldMatch() As Double
+          Dim ldCur As Double
+          Dim ldMax As Double
+          Dim liCnt1 As Integer
+          Dim liCnt2 As Integer
+          Dim liCnt3 As Integer
+          Dim lbMatched() As Boolean
+          Dim lsNew As String
+          Dim lsChr As String
+          Dim lsKeep As String
+         
+          'set default value as failure
+          FuzzyMatchByWord = 0
+         
+          'create list of characters to keep
+          lsKeep = "BCDFGHJKLMNPQRSTVWXYZ0123456789 "
+          If Not lbStripVowels Then
+              lsKeep = lsKeep & "AEIOU"
+          End If
+         
+          'clean up phrases by stripping undesired characters
+          'phrase1
+          lsPhrase1 = Trim$(UCase$(lsPhrase1))
+          lsNew = ""
+          For liCnt1 = 1 To Len(lsPhrase1)
+              lsChr = Mid$(lsPhrase1, liCnt1, 1)
+              If InStr(lsKeep, lsChr) <> 0 Then
+                  lsNew = lsNew & lsChr
+              End If
+          Next
+          lsPhrase1 = lsNew
+          lsPhrase1 = Replace(lsPhrase1, "  ", " ")
+          lsWord1 = Split(lsPhrase1, " ")
+          If UBound(lsWord1) = -1 Then
+              Exit Function
+          End If
+          ReDim ldMatch(UBound(lsWord1))
+          'phrase2
+          lsPhrase2 = Trim$(UCase$(lsPhrase2))
+          lsNew = ""
+          For liCnt1 = 1 To Len(lsPhrase2)
+              lsChr = Mid$(lsPhrase2, liCnt1, 1)
+              If InStr(lsKeep, lsChr) <> 0 Then
+                  lsNew = lsNew & lsChr
+              End If
+          Next
+          lsPhrase2 = lsNew
+          lsPhrase2 = Replace(lsPhrase2, "  ", " ")
+          lsWord2 = Split(lsPhrase2, " ")
+          If UBound(lsWord2) = -1 Then
+              Exit Function
+          End If
+          ReDim lbMatched(UBound(lsWord2))
+         
+          'exit if empty
+          If Trim$(lsPhrase1) = "" Or Trim$(lsPhrase2) = "" Then
+              Exit Function
+          End If
+         
+          'compare words in each phrase
+          For liCnt1 = 0 To UBound(lsWord1)
+              ldMax = 0
+              For liCnt2 = 0 To UBound(lsWord2)
+                  If Not lbMatched(liCnt2) Then
+                      ldCur = FuzzyMatch(lsWord1(liCnt1), lsWord2(liCnt2))
+                      If ldCur > ldMax Then
+                          liCnt3 = liCnt2
+                          ldMax = ldCur
+                      End If
+                  End If
+              Next
+              lbMatched(liCnt3) = True
+              ldMatch(liCnt1) = ldMax
+          Next
+         
+          'discard extra words
+          ldMax = 0
+          For liCnt1 = 0 To UBound(ldMatch)
+              ldMax = ldMax + ldMatch(liCnt1)
+          Next
+          If lbDiscardExtra Then
+              liCnt2 = 0
+              For liCnt1 = 0 To UBound(lbMatched)
+                  If lbMatched(liCnt1) Then
+                      liCnt2 = liCnt2 + 1
+                  End If
+              Next
+          Else
+              liCnt2 = UBound(lsWord2) + 1
+          End If
+         
+          'return overall similarity
+          FuzzyMatchByWord = 100 * (ldMax / liCnt2)
+         
+      End Function
+    '''
+  }
+  {
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Function FuzzyMatch(Fstr As String, Sstr As String) As Double
+          
+          Dim L, L1, L2, M, SC, T, R As Integer
+         
+          L = 0
+          M = 0
+          SC = 1
+         
+          L1 = Len(Fstr)
+          L2 = Len(Sstr)
+         
+          Do While L < L1
+              L = L + 1
+              For T = SC To L1
+                  If Mid$(Sstr, L, 1) = Mid$(Fstr, T, 1) Then
+                      M = M + 1
+                      SC = T
+                      T = L1 + 1
+                  End If
+              Next T
+          Loop
+         
+          If L1 = 0 Then
+              FuzzyMatch = 0
+          Else
+              FuzzyMatch = M / L1
+          End If
+      
+      End Function
+    '''
+    linesHighlighted: []
+  }
+  {
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Option Explicit
+      Public Declare Function GetTickCount Lib "kernel32.dll" () As Long
+      'To be placed in the Declarations area
+      '_____________________________________
+      Sub TestFuzzy()
+      Dim t As Long, a As Long, i As Long
+        t = GetTickCount
+        For i = 1 To 100000
+          a = Fuzzy("Sorin Sion", "Open Source")
+        Next
+        Debug.Print "Similarity score: " & a & "; " & i - 1 & " iterations took " & _
+        GetTickCount - t & " milliseconds"
+      End Sub
+      'TestFuzzy's result should look like:
+      'Similarity score: 0.3; 100000 iterations took 2094 milliseconds
+      'The test was done on an Intel processor at 3.2GHz
+      '_____________________________________
+      Public Function Fuzzy(ByVal s1 As String, ByVal s2 As String) As Single
+      Dim i As Integer, j As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+      Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single 
+      '
+      '                ******* INPUT STRINGS CLEANSING *******
+      '
+      s1 = UCase(s1) 'input strings are converted to uppercase
+      d1 = Len(s1)
+      j = 1
+      For i = 1 To d1
+        c = Mid(s1, i, 1)
+        Select Case c
+        Case "0" To "9", "A" To "Z" 'filter the allowable characters
+          a1 = a1 & c 'a1 is what remains from s1 after filtering
+          j = j + 1
+        End Select
+      Next
+      If j = 1 Then Exit Function 'if s1 is empty after filtering
+      d1 = j - 1
+      s2 = UCase(s2)
+      d2 = Len(s2)
+      j = 1
+      For i = 1 To d2
+        c = Mid(s2, i, 1)
+        Select Case c
+        Case "0" To "9", "A" To "Z"
+          a2 = a2 & c
+          j = j + 1
+        End Select
+      Next
+      If j = 1 Then Exit Function
+      d2 = j - 1
+      k = d1
+      If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+                      'so we swap the variables
+        k = d2
+        d2 = d1
+        d1 = k
+        s1 = a2
+        s2 = a1
+        a1 = s1
+        a2 = s2
+      Else
+        s1 = a1
+        s2 = a2
+      End If
+      If k = 1 Then 'degenerate case, where the shortest string is just one character
+        If InStr(1, s2, s1, vbBinaryCompare) > 0 Then
+          Fuzzy = 1 / d2
+        Else
+          Fuzzy = 0
+        End If
+      Else                '******* MAIN LOGIC HERE *******
+        i = 1
+        f = 0
+        o = 0
+        Do 'count the identical characters in s1 and s2 ("frequency analysis")
+          p = InStr(1, s2, Mid(s1, i, 1), vbBinaryCompare)
+                          'search the character at position i from s1 in s2
+          If p > 0 Then   'found a matching character, at position p in s2
+            f = f + 1     'increment the frequency counter
+            s2 = Left(s2, p - 1) & "~" & Mid(s2, p + 1)
+                          'replace the found character with one outside the allowable list
+                          '(I used tilde here), to prevent re-finding
+            Do            'check the order of characters
+              If i >= k Then Exit Do 'no more characters to search
+              If Mid(s2, p + 1, 1) = Mid(s1, i + 1, 1) Then
+                          'test if the next character is the same in the two strings
+                f = f + 1 'increment the frequency counter
+                o = o + 1 'increment the order counter
+                i = i + 1
+                p = p + 1
+              Else
+                Exit Do
+              End If
+            Loop
+          End If
+          If i >= k Then Exit Do
+          i = i + 1
+        Loop
+        If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+                                'because two characters are required to define "order"
+      finish:
+        w = 2 'Weight of characters order match against characters frequency match;
+              'feel free to experiment, to get best matching results with your data.
+              'If only frequency is important, you can get rid of the second Do...Loop
+              'to significantly accelerate the code.
+              'By altering a bit the code above and the equation below you may get rid
+              'of the frequency parameter, since the order counter increments only for
+              'identical characters which are in the same order.
+              'However, I usually keep both parameters, since they offer maximum flexibility
+              'with a variety of data, and both should be maintained for this project
+        Fuzzy = (w * o + f) / (w + 1) / d2
+      End If
+      End Function
+    '''
+    linesHighlighted: []
+  }
+  {
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Option Explicit
+      'Felipe Costa Gualberto suggested this compiler directive that makes the code work with all VBA versions
+      #If VBA7 Then
+        Declare PtrSafe Function GetTickCount Lib "kernel32" () As Long
+      #Else
+        Declare Function GetTickCount Lib "kernel32.dll" () As Long
+      #End If
+      
+      Sub AllTests()
+      Debug.Print vbLf & "Test the amount of time spent in the character cleansing part vs. the whole function, in it's original form"
+      TestFilterVSWhole
+      Debug.Print vbLf & "Test the effect of searching A and 9 in ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 with InStr"
+      TestInStr
+      Debug.Print vbLf & "Test using the Like operator instead of InStr for filtering characters"
+      TestInStrVSLike
+      Debug.Print vbLf & "Test various filter forms"
+      TestFilters
+      Debug.Print vbLf & "Test various improvements in the Fuzzy routines"
+      TestFuzzy
+      End Sub
+      
+      Sub TestFuzzy()
+        Dim t As Long, a As Single, i As Long, n As Long, s1 As String, s2 As String
+        Dim f0 As Single, f1 As Single, f2 As Single, f3 As Single, f4 As Single, f5 As Single, f6 As Single, f7 As Single
+        s1 = "Sorin Sion"
+        s2 = "Open Source"
+        n = 200000
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy0(s1, s2): Next
+        f0 = GetTickCount - t
+        Debug.Print ("Fuzzy0. Similarity score: " & a & "; " & i - 1 & " iterations took " & f0 & " milliseconds. [Original code]")
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy1(s1, s2): Next
+        f1 = GetTickCount - t
+        Debug.Print ("Fuzzy1. Similarity score: " & a & "; " & i - 1 & " iterations took " & f1 & " milliseconds. (" & _
+              Int(100 * (1 - f1 / f0)) & "% faster). [Mid, Ucase, Left replaced with Mid$, Ucase$, Left$]")
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy2(s1, s2): Next
+        f2 = GetTickCount - t
+        Debug.Print ("Fuzzy2. Similarity score: " & a & "; " & i - 1 & " iterations took " & f2 & " milliseconds. (" & _
+              Int(100 * (1 - f2 / f0)) & "% faster). [Filtering characters with InStr]")
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy3(s1, s2): Next
+        f3 = GetTickCount - t
+        Debug.Print ("Fuzzy3. Similarity score: " & a & "; " & i - 1 & " iterations took " & f3 & " milliseconds. (" & _
+              Int(100 * (1 - f3 / f0)) & "% faster). [Filtering with conversion to integers]")
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy4(s1, s2): Next
+        f4 = GetTickCount - t
+        Debug.Print ("Fuzzy4. Similarity score: " & a & "; " & i - 1 & " iterations took " & f4 & " milliseconds. (" & _
+              Int(100 * (1 - f4 / f0)) & "% faster). [Mid$(s2, p, 1) = '~' instead of s2 = Left(s2, p - 1) & '~' & Mid(s2, p + 1)]")
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy5(s1, s2): Next
+        f5 = GetTickCount - t
+        Debug.Print ("Fuzzy5. Similarity score: " & a & "; " & i - 1 & " iterations took " & f5 & " milliseconds. (" & _
+              Int(100 * (1 - f5 / f0)) & "% faster). [Optimized, using 'InStr' in filtering]")
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy5(s1, s2): Next
+        f6 = GetTickCount - t
+        Debug.Print ("Fuzzy6. Similarity score: " & a & "; " & i - 1 & " iterations took " & f6 & " milliseconds. (" & _
+              Int(100 * (1 - f6 / f0)) & "% faster). [Optimized, using 'Like' operator in filtering]")
+        t = GetTickCount
+        For i = 1 To n: a = HotFuzz(s1, s2): Next
+        f7 = GetTickCount - t
+        Debug.Print ("HotFuzz. Similarity score: " & a & "; " & i - 1 & " iterations took " & f7 & " milliseconds. (" & _
+              Int(100 * (1 - f7 / f0)) & "% faster). [Optimized, parametrized, using 'Like' operator in filtering]")
+      End Sub
+      
+      Sub TestFilterVSWhole()
+        Dim t As Long, a As Single, i As Long, n As Long, s1 As String, s2 As String, f0 As Single, fl As Single
+        s1 = "Sorin Sion"
+        s2 = "Open Source"
+        n = 200000
+        t = GetTickCount
+        For i = 1 To n: a = Fuzzy0(s1, s2): Next
+        f0 = GetTickCount - t
+        Debug.Print ("Whole Fuzzy0. " & i - 1 & " iterations took " & f0 & " milliseconds. [Original code]")
+        t = GetTickCount
+        For i = 1 To n: a = Filter0(s1, s2): Next
+        fl = GetTickCount - t
+        Debug.Print ("Only characters filtering. " & i - 1 & " iterations took " & fl & " milliseconds. (" & _
+              Int(100 * (fl / f0)) & "% of total time). [Original character filter]")
+      End Sub
+      
+      Sub TestFilters()
+        Dim t As Long, a As Single, i As Long, n As Long, s1 As String, s2 As String, f0 As Single, f1 As Single, f2 As Single, f3 As Single, f4 As Single
+        s1 = "Sorin Sion"
+        s2 = "Open Source"
+        n = 200000
+        t = GetTickCount
+        For i = 1 To n: a = Filter0(s1, s2): Next
+        f0 = GetTickCount - t
+        Debug.Print (i - 1 & " iterations took " & f0 & " milliseconds. [Original filter, with Select Case]")
+        t = GetTickCount
+        For i = 1 To n: a = Filter1(s1, s2): Next
+        f1 = GetTickCount - t
+        Debug.Print (i - 1 & " iterations took " & f1 & " milliseconds. (" & Int(100 * (f1 / f0)) & "% of total time). [InStr]")
+        t = GetTickCount
+        For i = 1 To n: a = Filter2(s1, s2): Next
+        f2 = GetTickCount - t
+        Debug.Print (i - 1 & " iterations took " & f2 & " milliseconds. (" & Int(100 * (f2 / f0)) & "% of total time). [Like]")
+        t = GetTickCount
+        For i = 1 To n: a = Filter3(s1, s2): Next
+        f3 = GetTickCount - t
+        Debug.Print (i - 1 & " iterations took " & f3 & " milliseconds. (" & Int(100 * (f3 / f0)) & "% of total time). [Parametrized InStr]")
+        t = GetTickCount
+        For i = 1 To n: a = Filter4(s1, s2): Next
+        f4 = GetTickCount - t
+        Debug.Print (i - 1 & " iterations took " & f4 & " milliseconds. (" & Int(100 * (f4 / f0)) & "% of total time). [Parametrized Like]")
+      End Sub
+      
+      Sub TestInStr()
+        Dim t As Long, t1 As Long, t2 As Long, a As Integer, i As Long
+        t = GetTickCount
+        For i = 1 To 10000000
+          a = InStr(1, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "A", 0)
+        Next
+        t1 = GetTickCount - t
+        t = GetTickCount
+        For i = 1 To 10000000
+          a = InStr(1, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "9", 0)
+        Next
+        t2 = GetTickCount - t
+        Debug.Print "Finding 9 is " & Format((t2 / t1), "#.0") & " times slower than finding A"
+        'finding an '9' takes roughly twice the time to find an 'A' in the ordered string above
+        'so optimizing the characters order based on letter probability in the general language makes sense
+        'i.e. EIARNUTCLSODPMVFBGZHJXKYWQ0123456789 for Romanian language, according to Adriana Vlad, Adrian Mitrea and Mihai Mitrea: http://www.sepln.org/revistaSEPLN/revista/26/vlad.pdf
+      End Sub
+      
+      Sub TestInStrVSLike()
+        Dim t As Long, t1 As Long, t2 As Long, a As Integer, i As Long
+        t = GetTickCount
+        For i = 1 To 20000000
+          a = InStr(1, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "A", 0)
+        Next
+        t1 = GetTickCount - t
+        t = GetTickCount
+        For i = 1 To 20000000
+          a = "A" Like "[A-Z#]"
+        Next
+        t2 = GetTickCount - t
+        Debug.Print "Like is " & Int(100 * (1 - t2 / t1)) & "% faster than InStr on letters and numbers"
+        '"Like" is ~15% faster than "InStr" on letters and numbers.
+        'However, if searching for hyphens or right brackets in an optional manner, supplementary logic is needed
+        'in a "Like" filter routine and this cancels the advantage - see Filter3 function
+      End Sub
+      
+      Function Fuzzy0(ByVal s1 As String, ByVal s2 As String) As Single
+        Dim i As Integer, j As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy0 = 0
+        s1 = UCase(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        j = 1
+        a1 = ""
+        For i = 1 To d1
+          c = Mid(s1, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z" 'filter the allowable characters
+              a1 = a1 & c 'a1 is what remains from s1 after filtering
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function 'if s1 is empty after filtering
+        d1 = j - 1
+        s2 = UCase(s2)
+        d2 = Len(s2)
+        j = 1
+        a2 = ""
+        For i = 1 To d2
+          c = Mid(s2, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z"
+              a2 = a2 & c
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function
+        d2 = j - 1
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, vbBinaryCompare) > 0 Then
+            Fuzzy0 = 1 / d2
+          Else
+            Fuzzy0 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid(s1, i, 1), vbBinaryCompare)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              s2 = Left(s2, p - 1) & "~" & Mid(s2, p + 1)
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid(s2, p + 1, 1) = Mid(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy0 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Fuzzy1(ByVal s1 As String, ByVal s2 As String) As Single
+      'Replacing Mid, Left, Ucase with their string-returning counterparts, Mid$, Left$, Ucase$
+      'Change suggested by Doug Bliss and cHARLES_wILLIAMS
+        Dim i As Integer, j As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy1 = 0
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        j = 1
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z" 'filter the allowable characters
+              a1 = a1 & c 'a1 is what remains from s1 after filtering
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function 'if s1 is empty after filtering
+        d1 = j - 1
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        j = 1
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z"
+              a2 = a2 & c
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function
+        d2 = j - 1
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, vbBinaryCompare) > 0 Then
+            Fuzzy1 = 1 / d2
+          Else
+            Fuzzy1 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid$(s1, i, 1), vbBinaryCompare)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              s2 = Left$(s2, p - 1) & "~" & Mid$(s2, p + 1)
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid$(s2, p + 1, 1) = Mid$(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy1 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Fuzzy2(ByVal s1 As String, ByVal s2 As String) As Single
+      'Replacing the string filtering (cleansing) routine with an InStr version
+      'Change suggested by Stuart McLachlan (PNG)
+        Dim i As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy2 = 0
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c) Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c) Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, vbBinaryCompare) > 0 Then
+            Fuzzy2 = 1 / d2
+          Else
+            Fuzzy2 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid$(s1, i, 1), vbBinaryCompare)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              s2 = Left$(s2, p - 1) & "~" & Mid$(s2, p + 1)
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid$(s2, p + 1, 1) = Mid$(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy2 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Fuzzy3(ByVal s1 As String, ByVal s2 As String) As Single
+      'Replacing the string filtering (cleansing) routine with an integer evaluating one
+      'Change suggested by Malcolm Dixon
+        Dim i As Integer, j As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy3 = 0
+        s1 = UCase(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid(s1, i, 1)
+          j = Asc(c)
+          If (j > 47 And j < 58) Or (j > 64 And j < 91) Then
+            a1 = a1 & c
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function 'if s1 is empty after filtering
+        s2 = UCase(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid(s2, i, 1)
+          j = Asc(c)
+          If (j > 47 And j < 58) Or (j > 64 And j < 91) Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function 'if s2 is empty after filtering
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, vbBinaryCompare) > 0 Then
+            Fuzzy3 = 1 / d2
+          Else
+            Fuzzy3 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid(s1, i, 1), vbBinaryCompare)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              s2 = Left(s2, p - 1) & "~" & Mid(s2, p + 1)
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid(s2, p + 1, 1) = Mid(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy3 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Fuzzy4(ByVal s1 As String, ByVal s2 As String) As Single
+      'Replacing the [s2 = Left(s2, p - 1) & "~" & Mid(s2, p + 1)] line with [Mid$(s2, p, 1) = "~"]
+      'Change suggested by Stuart McLachlan (PNG) and Doug Bliss
+        Dim i As Integer, j As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy4 = 0
+        s1 = UCase(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        j = 1
+        a1 = ""
+        For i = 1 To d1
+          c = Mid(s1, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z" 'filter the allowable characters
+              a1 = a1 & c 'a1 is what remains from s1 after filtering
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function 'if s1 is empty after filtering
+        d1 = j - 1
+        s2 = UCase(s2)
+        d2 = Len(s2)
+        j = 1
+        a2 = ""
+        For i = 1 To d2
+          c = Mid(s2, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z"
+              a2 = a2 & c
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function
+        d2 = j - 1
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, vbBinaryCompare) > 0 Then
+            Fuzzy4 = 1 / d2
+          Else
+            Fuzzy4 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid(s1, i, 1), vbBinaryCompare)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              Mid(s2, p, 1) = "~"
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid(s2, p + 1, 1) = Mid(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy4 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Fuzzy5(ByVal s1 As String, ByVal s2 As String) As Single
+      'Integrating all the suggested optimizations
+        Dim i As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy5 = 0
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If InStr(1, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c, 0) Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If InStr(1, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c, 0) Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, 0) Then
+            Fuzzy5 = 1 / d2
+          Else
+            Fuzzy5 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid$(s1, i, 1), 0)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              Mid$(s2, p, 1) = "~"
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid$(s2, p + 1, 1) = Mid$(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy5 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Fuzzy6(ByVal s1 As String, ByVal s2 As String) As Single
+      'Integrating string functions replacement and [Mid$(s2, p, 1) = "~"] but using the Like operator in the string filtering routine
+        Dim i As Integer, k As Integer, d1 As Integer, d2 As Integer, p As Integer
+        Dim c As String, a1 As String, a2 As String, f As Single, o As Single, w As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Fuzzy6 = 0
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If c Like "[A-Z0-9]" Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If c Like "[A-Z0-9]" Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, 0) Then
+            Fuzzy6 = 1 / d2
+          Else
+            Fuzzy6 = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid$(s1, i, 1), 0)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              Mid$(s2, p, 1) = "~"
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid$(s2, p + 1, 1) = Mid$(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter
+          'because two characters are required to define "order"
+          w = 2 'Weight of characters order match against characters frequency match;
+          'feel free to experiment, to get best matching results with your data.
+          'If only frequency is important, you can get rid of the second Do...Loop
+          'to significantly accelerate the code.
+          'By altering a bit the code above and the equation below you may get rid
+          'of the frequency parameter, since the order counter increments only for
+          'identical characters which are in the same order.
+          'However, I usually keep both parameters, since they offer maximum flexibility
+          'with a variety of data, and both should be maintained for this project
+          Fuzzy6 = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+      Function Filter0(ByVal s1 As String, ByVal s2 As String) As Single
+      'Original, Select Case filtering
+        Dim i As Integer, j As Integer, d1 As Integer, d2 As Integer
+        Dim c As String, a1 As String, a2 As String
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Filter0 = 0
+        s1 = UCase(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        j = 1
+        a1 = ""
+        For i = 1 To d1
+          c = Mid(s1, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z" 'filter the allowable characters
+              a1 = a1 & c 'a1 is what remains from s1 after filtering
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function 'if s1 is empty after filtering
+        d1 = j - 1
+        s2 = UCase(s2)
+        d2 = Len(s2)
+        j = 1
+        a2 = ""
+        For i = 1 To d2
+          c = Mid(s2, i, 1)
+          Select Case c
+            Case "0" To "9", "A" To "Z"
+              a2 = a2 & c
+              j = j + 1
+          End Select
+        Next
+        If j = 1 Then Exit Function
+        d2 = j - 1
+      End Function
+      
+      Function Filter1(ByVal s1 As String, ByVal s2 As String) As Single
+      'InStr version, suggested by Stuart McLachlan (PNG)
+        Dim i As Integer, d1 As Integer, d2 As Integer
+        Dim c As String, a1 As String, a2 As String
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Filter1 = 0
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c) Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c) Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+      End Function
+      
+      Function Filter2(ByVal s1 As String, ByVal s2 As String) As Single
+      'Using Like operator for filtering
+        Dim i As Integer, d1 As Integer, d2 As Integer
+        Dim c As String, a1 As String, a2 As String
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Filter2 = 0
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If c Like "[A-Z0-9]" Then  'filter the allowable characters
+              'To match the special characters left bracket ([), question mark (?), number sign (#), and asterisk (*), enclose them in brackets.
+              'I.e. to allow for a small letter, a number, the left bracket or the bang sign the pattern string should be "[a-z0-9[!]"
+              'The bang sign (!) in the first position after the left bracket is equivalent to "Not Like", so "[!a-z]" is equivalent to "anything which is not a small letter"
+              'To match a hyphen, it must be used as the first or last character in the characters list between the brackets, otherwise is interpreted as range-defining
+              '# can be used for number matching but only outside brackets. Use 0-9 inside brackets for number matching.
+              'The right bracket (]) can't be used within a group to match itself, but it can be used outside a group as an individual character. This leads to coding complications and therefore loss of speed if you need to allow it.
+             a1 = a1 & c 'a1 is what remains from s1 after filtering
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If c Like "[A-Z0-9]" Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+      End Function
+      
+      Function Filter3(ByVal s1 As String, ByVal s2 As String, Optional ByVal n As Boolean = True, Optional ByVal x As String = "") As Single
+      'InStr version, suggested by Stuart McLachlan (PNG), modified to allow optional supplemental characters in the input strings - passed in the 'x' parameter.
+      'Use x & Chr(34) if you need to allow double quotes (") in the input strings
+      'Allowing numbers in the input strings is optional (the 'n' parameter)
+        Dim i As Integer, d1 As Integer, d2 As Integer, y As String
+        Dim c As String, a1 As String, a2 As String
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Filter3 = 0
+        If n Then 'allow numbers in the input strings?
+          y = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        Else
+          y = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        End If
+        y = y & x
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If InStr(y, c) Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If InStr(y, c) Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+      End Function
+      
+      Function Filter4(ByVal s1 As String, ByVal s2 As String, Optional n As Boolean = True, Optional x As String = "") As Single
+      'Using Like operator for filtering, with added code to allow special characters in the input strings, including hyphen and the right bracket - passed in the 'x' parameter.
+      'Use x & Chr(34) if you need to allow double quotes (") in the input strings
+      'Allowing numbers in the input strings is optional (the 'n' parameter)
+        Dim i As Integer, d1 As Integer, d2 As Integer, y As String, b As Boolean
+        Dim c As String, a1 As String, a2 As String
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        Filter4 = 0
+        b = False
+        If n Then 'allow numbers in the input strings?
+          y = "[A-Z0-9"
+        Else
+          y = "[A-Z"
+        End If
+        If Len(x) > 0 Then 'we want to allow some special characters in the input strings, i.e. space, punctuation etc
+          If InStr(1, x, "-", 0) Then
+            y = Replace(x, "-", "") & "-" 'hyphen must be placed first or last inside a [..] group in a Like comparison
+          End If
+          If InStr(1, x, "]", 0) Then
+            y = Replace(x, "]", "") 'right bracket can't be part of a [..] group in a Like comparison - dedicated logic must be developed to treat this case
+            b = True 'if we want to allow the right bracket in the input strings
+          End If
+        End If
+        y = y & "]" 'closing the group
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If c Like y Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          ElseIf b Then
+            If c = "]" Then 'special treatment for the right bracket
+              a1 = a1 & c
+            End If
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If c Like y Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+      End Function
+      
+      Function HotFuzz(ByVal s1 As String, ByVal s2 As String, Optional ByVal n As Boolean = True, Optional ByVal x As String = "", Optional ByVal w As Single = 2) As Single
+      'Using Like operator for filtering, with added code to allow special characters in the input strings, including hyphen and the right bracket - passed in the 'x' parameter.
+      'Use x & Chr(34) if you need to allow double quotes (") in the input strings
+      'Allowing numbers in the input strings is optional (the 'n' parameter)
+      'The 'w' parameter is the weight of "order" over "frequency" scores in the final score. Feel free to experiment, to get best matching results with your data.
+        Dim i As Integer, d1 As Integer, d2 As Integer, y As String, b As Boolean
+        Dim c As String, a1 As String, a2 As String, k As Integer, p As Integer, f As Single, o As Single
+        '
+        '        ******* INPUT STRINGS CLEANSING *******
+        '
+        HotFuzz = 0
+        b = False
+        If n Then 'allow numbers in the input strings?
+          y = "[A-Z0-9"
+        Else
+          y = "[A-Z"
+        End If
+        If Len(x) > 0 Then 'we want to allow some special characters in the input strings, i.e. space, punctuation etc
+          If InStr(1, x, "-", 0) Then
+            y = Replace(x, "-", "") & "-" 'hyphen must be placed first or last inside a [..] group in a Like comparison
+          End If
+          If InStr(1, x, "]", 0) Then
+            y = Replace(x, "]", "") 'right bracket can't be part of a [..] group in a Like comparison - dedicated logic must be developed to treat this case
+            b = True 'if we want to allow the right bracket in the input strings
+          End If
+        End If
+        y = y & "]" 'closing the group
+        s1 = UCase$(s1) 'input strings are converted to uppercase
+        d1 = Len(s1)
+        a1 = ""
+        For i = 1 To d1
+          c = Mid$(s1, i, 1)
+          If c Like y Then  'filter the allowable characters
+            a1 = a1 & c 'a1 is what remains from s1 after filtering
+          ElseIf b Then
+            If c = "]" Then 'special treatment for the right bracket
+              a1 = a1 & c
+            End If
+          End If
+        Next
+        d1 = Len(a1)
+        If d1 = 0 Then Exit Function
+        s2 = UCase$(s2)
+        d2 = Len(s2)
+        a2 = ""
+        For i = 1 To d2
+          c = Mid$(s2, i, 1)
+          If c Like y Then
+            a2 = a2 & c
+          End If
+        Next
+        d2 = Len(a2)
+        If d2 = 0 Then Exit Function
+        k = d1
+        If d2 < d1 Then 'to prevent doubling the code below s1 must be made the shortest string,
+          'so we swap the variables
+          k = d2
+          d2 = d1
+          d1 = k
+          s1 = a2
+          s2 = a1
+          a1 = s1
+          a2 = s2
+        Else
+          s1 = a1
+          s2 = a2
+        End If
+        If k = 1 Then 'degenerate case, where the shortest string is just one character
+          If InStr(1, s2, s1, 0) Then
+            HotFuzz = 1 / d2
+          Else
+            HotFuzz = 0
+          End If
+        Else        '******* MAIN LOGIC HERE *******
+          i = 1
+          f = 0
+          o = 0
+          Do 'count the identical characters in s1 and s2 ("frequency analysis")
+            p = InStr(1, s2, Mid$(s1, i, 1), 0)
+            'search the character at position i from s1 in s2
+            If p > 0 Then   'found a matching character, at position p in s2
+              f = f + 1   'increment the frequency counter
+              Mid$(s2, p, 1) = "~"
+              'replace the found character with one outside the allowable list
+              '(I used tilde here), to prevent re-finding
+              Do      'check the order of characters
+                If i >= k Then Exit Do 'no more characters to search
+                If Mid$(s2, p + 1, 1) = Mid$(s1, i + 1, 1) Then
+                  'test if the next character is the same in the two strings
+                  f = f + 1 'increment the frequency counter
+                  o = o + 1 'increment the order counter
+                  i = i + 1
+                  p = p + 1
+                Else
+                  Exit Do
+                End If
+              Loop
+            End If
+            If i >= k Then Exit Do
+            i = i + 1
+          Loop
+          If o > 0 Then o = o + 1 'if we got at least one match, adjust the order counter because two characters are required to define "order"
+          HotFuzz = (w * o + f) / (w + 1) / d2
+        End If
+      End Function
+      
+    '''
+    linesHighlighted: []
+  }
+]
+isStarred: false
+isTrashed: false

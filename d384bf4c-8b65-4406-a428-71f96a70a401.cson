@@ -1,0 +1,28 @@
+createdAt: "2019-08-21T02:17:47.694Z"
+updatedAt: "2019-08-21T02:18:12.068Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Hide all but the Active Worksheet"
+tags: [
+  "Active_Worksheet"
+]
+description: "Hide all but the Active Worksheet"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub HideWorksheet()
+      Dim ws As Worksheet
+      For Each ws In ThisWorkbook.Worksheets
+      If ws.Name <> ThisWorkbook.ActiveSheet.Name Then
+      ws.Visible = xlSheetHidden
+      End If
+      Next ws
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

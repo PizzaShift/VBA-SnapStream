@@ -1,0 +1,25 @@
+createdAt: "2019-08-21T02:25:18.069Z"
+updatedAt: "2019-08-21T02:25:33.441Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Create a Backup of a Current Workbook"
+tags: [
+  "Create_a_Backup"
+]
+description: "Create a Backup of a Current Workbook"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub FileBackUp()
+      ThisWorkbook.SaveCopyAs Filename:=ThisWorkbook.Path & _
+      "" & Format(Date, "mm-dd-yy") & " " & _
+      ThisWorkbook.name
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

@@ -1,0 +1,21 @@
+createdAt: "2019-08-21T02:16:56.526Z"
+updatedAt: "2019-08-21T02:17:09.119Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Print Selection"
+tags: []
+description: "Print Selection"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub printSelection()
+      Selection.PrintOutCopies:=1, Collate:=True
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

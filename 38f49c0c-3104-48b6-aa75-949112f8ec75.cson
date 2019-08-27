@@ -1,0 +1,28 @@
+createdAt: "2019-08-21T03:07:52.958Z"
+updatedAt: "2019-08-21T03:08:07.197Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Insert Time Range"
+tags: [
+  "Time_Range"
+]
+description: "Insert Time Range"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub TimeStamp()
+      Dim i As Integer
+      For i = 1 To 24
+      ActiveCell.FormulaR1C1 = i & ":00"
+      ActiveCell.NumberFormat = "[$-409]h:mm AM/PM;@"
+      ActiveCell.Offset(RowOffset:=1, ColumnOffset:=0).Select
+      Next i
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

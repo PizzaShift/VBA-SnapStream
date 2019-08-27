@@ -1,0 +1,29 @@
+createdAt: "2019-08-21T03:16:45.844Z"
+updatedAt: "2019-08-21T03:17:01.389Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Remove Negative Signs"
+tags: [
+  "Remove_Negative"
+]
+description: "Remove Negative Signs"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub removeNegativeSign()
+      Dim rngAs Range
+      Selection.Value= Selection.Value
+      For Each rngIn Selection
+      If WorksheetFunction.IsNumber(rng)
+      Then rng.Value= Abs(rng)
+      End If
+      Next rng
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

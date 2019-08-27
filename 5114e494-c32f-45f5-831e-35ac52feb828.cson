@@ -1,0 +1,30 @@
+createdAt: "2019-08-21T01:17:38.453Z"
+updatedAt: "2019-08-21T01:54:48.003Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Add Serial Numbers"
+tags: [
+  "serial_numbers"
+]
+description: "Add Serial Numbers"
+snippets: [
+  {
+    linesHighlighted: []
+    name: "AddSerialNumbers.bas"
+    mode: "VBScript"
+    content: '''
+      Sub AddSerialNumbers()
+      Dim i As Integer
+      On Error GoTo Last
+      i = InputBox("Enter Value", "Enter Serial Numbers")
+      For i = 1 To i
+      ActiveCell.Value = i
+      ActiveCell.Offset(1, 0).Activate
+      Next i
+      Last:Exit Sub
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

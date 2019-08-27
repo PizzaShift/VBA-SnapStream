@@ -1,0 +1,27 @@
+createdAt: "2019-08-21T02:10:16.695Z"
+updatedAt: "2019-08-21T02:10:41.257Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Highlight Cells with Misspelled Words"
+tags: [
+  "Misspelled_Words"
+]
+description: "Highlight Cells with Misspelled Words"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub HighlightMisspelledCells()
+      Dim rng As Range
+      For Each rng In ActiveSheet.UsedRange
+      If Not Application.CheckSpelling(word:=rng.Text) Then
+      rng.Style= "Bad" End If
+      Next rng
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

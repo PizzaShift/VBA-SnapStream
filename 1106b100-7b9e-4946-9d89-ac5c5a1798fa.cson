@@ -1,0 +1,29 @@
+createdAt: "2019-08-21T01:56:19.167Z"
+updatedAt: "2019-08-21T01:58:05.136Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Insert Multiple Columns"
+tags: [
+  "Columns"
+]
+description: "Insert Multiple Columns"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub InsertMultipleColumns()
+      Dim i As Integer
+      Dim j As Integer ActiveCell.EntireColumn.Select
+      On Error GoTo Last
+      i = InputBox("Enter number of columns to insert", "Insert Columns")
+      For j = 1 To i
+      Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromRightorAbove Next j
+      Last:Exit Sub
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

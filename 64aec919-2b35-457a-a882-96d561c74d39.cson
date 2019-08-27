@@ -1,0 +1,30 @@
+createdAt: "2019-08-21T02:10:46.437Z"
+updatedAt: "2019-08-21T02:11:19.058Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Highlight Cells With Error in the Entire Worksheet"
+tags: [
+  "Highlight_Cells"
+]
+description: "Highlight Cells With Error in the Entire Worksheet"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub highlightErrors()
+      Dim rng As Range
+      Dim i As Integer
+      For Each rng In ActiveSheet.UsedRange
+      If WorksheetFunction.IsError(rng) Then
+      i = i + 1 rng.Style = "bad"
+      End If
+      Next rng
+      MsgBox "There are total " & i & " error(s) in this worksheet."
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

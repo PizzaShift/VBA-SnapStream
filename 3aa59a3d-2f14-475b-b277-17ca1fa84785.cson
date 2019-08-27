@@ -1,0 +1,25 @@
+createdAt: "2019-08-21T02:53:38.885Z"
+updatedAt: "2019-08-21T02:53:55.736Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Paste Chart as an Image"
+tags: [
+  "Chart_as_an_Image"
+]
+description: "Paste Chart as an Image"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub ConvertChartToPicture()
+      ActiveChart.ChartArea.Copy
+      ActiveSheet.Range("A1").Select
+      ActiveSheet.Pictures.Paste.Select
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

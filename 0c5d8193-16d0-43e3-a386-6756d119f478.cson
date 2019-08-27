@@ -1,0 +1,21 @@
+createdAt: "2019-08-21T02:59:07.693Z"
+updatedAt: "2019-08-21T02:59:20.740Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Activate Data Entry Form"
+tags: []
+description: "Activate Data Entry Form"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub DataForm()
+      ActiveSheet.ShowDataForm
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

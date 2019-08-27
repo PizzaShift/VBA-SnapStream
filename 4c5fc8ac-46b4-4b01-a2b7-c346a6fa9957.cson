@@ -1,0 +1,29 @@
+createdAt: "2019-08-21T02:54:07.806Z"
+updatedAt: "2019-08-21T02:54:20.672Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Add Chart Title"
+tags: [
+  "Chart_Title"
+]
+description: "Add Chart Title"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub AddChartTitle()
+      Dim i As Variant
+      i = InputBox("Please enter your chart title", "Chart Title")
+      On Error GoTo Last
+      ActiveChart.SetElement (msoElementChartTitleAboveChart)
+      ActiveChart.ChartTitle.Text = i
+      Last:
+      Exit Sub
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

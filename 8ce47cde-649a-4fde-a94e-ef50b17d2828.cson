@@ -1,0 +1,22 @@
+createdAt: "2019-08-21T02:27:43.460Z"
+updatedAt: "2019-08-21T02:27:54.860Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Welcome Message"
+tags: []
+description: "Welcome Message"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub auto_open()
+      MsgBox "Welcome To ExcelChamps & Thanks for downloading this
+      file."
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

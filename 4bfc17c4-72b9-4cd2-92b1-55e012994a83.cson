@@ -1,0 +1,28 @@
+createdAt: "2019-08-21T02:09:04.324Z"
+updatedAt: "2019-08-21T02:09:12.835Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Highlight Negative Numbers"
+tags: []
+description: "Highlight Negative Numbers"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub highlightNegativeNumbers()
+      Dim Rng As Range
+      For Each Rng In Selection
+      If WorksheetFunction.IsNumber(Rng) Then
+      If Rng.Value < 0 Then
+      Rng.Font.Color= -16776961
+      End If
+      End If
+      Next
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

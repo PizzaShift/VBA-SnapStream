@@ -1,0 +1,29 @@
+createdAt: "2019-08-21T02:13:12.725Z"
+updatedAt: "2019-08-21T02:13:26.358Z"
+type: "SNIPPET_NOTE"
+folder: "5291b0259dc37fb35510"
+title: "Highlight Unique Values"
+tags: [
+  "Unique_Values"
+]
+description: "Highlight Unique Values"
+snippets: [
+  {
+    linesHighlighted: []
+    name: ""
+    mode: "VBScript"
+    content: '''
+      Sub highlightUniqueValues()
+      Dim rng As Range
+      Set rng = Selection
+      rng.FormatConditions.Delete
+      Dim uv As UniqueValues
+      Set uv = rng.FormatConditions.AddUniqueValues
+      uv.DupeUnique = xlUnique
+      uv.Interior.Color = vbGreen
+      End Sub
+    '''
+  }
+]
+isStarred: false
+isTrashed: false
