@@ -1,0 +1,26 @@
+'Create
+'Function EmailSimilarity
+'Function EmailConversationTopic
+'Function EmailWordFrequency
+'Function EmailWordOccuranceCounter
+'Function EmailWordSpeechType (noun, etc)
+'Function EmailSenarioLogger (Historical look at an email and how it was processed, then log the senario to track)
+'Function EmailSubjectAnalysis (Get all the information possible just using the subject, files, ppt data, statuses, etc)
+'Function OutlookMacroExporter (Export code as text, Export code as bas, Export code to github, Export to zip file)
+'Function OutlookMacroUpdater (Import from text, import from bas, import from github, import from email attaachment)
+'Function OutlookMacroImport
+'Function OutlookProjectBuilder (Auto import macros and create new tab with ribbon buttons)
+'Function ImportJIRADashboard
+'Function ImportJIRAIssues
+'Function ImportConfluenceClientData
+'Function FalloutEmail(ClientName) 'Create email
+'Function DataInquiryEmail(ClientName) 'Create email
+
+'Report Tab Toolkit Functions
+'Update eligibility file tab in tracking analysis
+'Update data inquiries tab in tracking analysis
+'Save all D.I. Drafts to drafts folder and create Review Request email
+'Fallout 'Clean-up' when fallout draft is created move fallout files associated to completed folder
+'HRA Impact Report Macro
+'Eligibility Tracker Sheet Macro
+'FTP List Macro
