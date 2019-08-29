@@ -16,6 +16,18 @@
 'Function FalloutEmail(ClientName) 'Create email
 'Function DataInquiryEmail(ClientName) 'Create email
 
+'📓 Macro Ideas™️
+'Email review request macro: Add Ribbon button to Outlook
+'Email Senario Macro: Record steps/info of an email cycles
+'Save Senario(s) as Signature in Outlook 
+'Stand-Up Notes Template: Add Ribbon button to Outlook
+'PNC Bank Macro: Update using PEGA exported report
+'Create Lockheed Martin Macro
+'Find macro that can identify cells if the color is similar
+'Tracking Sheet Macro: Add Ribbon Button to Outlook
+'Update 'Save Emails' Macro: Delete previous emails
+'Create SQL Query: Display all eligibility file data within dates
+
 'Report Tab Toolkit Functions
 'Update eligibility file tab in tracking analysis
 'Update data inquiries tab in tracking analysis
