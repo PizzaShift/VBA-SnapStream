@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T03:01:07.509Z"
-updatedAt: "2019-08-21T03:01:20.780Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "VBA Code to Search on Google"
-tags: [
-  "Search_on_Google"
-]
-description: "VBA Code to Search on Google"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub SearchWindow32()
       Dim chromePath As String
       Dim search_string As String
@@ -28,8 +14,4 @@ snippets: [
       (x86)GoogleChromeApplicationchrome.exe"
       Shell (chromePath & " -url http://google.com/#q=" & search_string)
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
