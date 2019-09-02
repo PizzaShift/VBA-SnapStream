@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T03:40:20.825Z"
-updatedAt: "2019-08-21T03:40:38.158Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "2 dimensional array"
-tags: [
-  "array"
-]
-description: "2 dimensional array"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Public Sub TwoDimArray()
       
           ' Declare a two dimensional array
@@ -35,8 +21,4 @@ snippets: [
           Next i
       
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
