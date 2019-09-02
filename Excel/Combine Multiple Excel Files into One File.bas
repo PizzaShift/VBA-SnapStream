@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T03:26:02.211Z"
-updatedAt: "2019-08-21T03:26:22.687Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Combine Multiple Excel Files into One File"
-tags: [
-  "Multiple_Excel_Files_into_One"
-]
-description: "Combine Multiple Excel Files into One File"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub ConslidateWorkbooks()
       'Created by Sumit Bansal from https://trumpexcel.com
       Dim FolderPath As String
@@ -31,8 +17,4 @@ snippets: [
       Loop
       Application.ScreenUpdating = True
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
