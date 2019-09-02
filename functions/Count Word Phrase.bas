@@ -1,20 +1,4 @@
-createdAt: "2019-08-21T04:35:57.995Z"
-updatedAt: "2019-08-21T04:38:40.732Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Count Word Phrase"
-tags: [
-  "Word_Occurance"
-  "Phrase_Count"
-  "Word_Count"
-]
-description: "Count Word Phrase"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       '1. You may treat the body as a regular string returned by the Body property of the MailItem 
       'class. However, the easiest way to count the number of words is using the Word object model. 
       'The Inspector class provides the WordEditorproperty which returns the Microsoft Word Document
@@ -73,8 +57,4 @@ snippets: [
       
       End If
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
