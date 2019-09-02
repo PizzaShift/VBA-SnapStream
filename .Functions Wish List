@@ -13,11 +13,13 @@
 'Function ImportJIRADashboard
 'Function ImportJIRAIssues
 'Function ImportConfluenceClientData
+'Function ConfluenceActivity (monitor updates tl client data)
 'Function FalloutEmail(ClientName) 'Create email
 'Function DataInquiryEmail(ClientName) 'Create email
 'Function ETLerrordescriptionOutput (enter error name from eligibility file and the description is the output, multi-error handler)
 'Function ETLFieldFormatRuleAndErrorChecker
 'Function FileConverter (csv,json,delimited,binary,etc)
+'Function FileProperties (Read & Write & create custom variables that can store data in the file properties)
 
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
