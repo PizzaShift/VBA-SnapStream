@@ -1,16 +1,4 @@
-createdAt: "2019-08-21T02:08:48.364Z"
-updatedAt: "2019-08-21T02:08:56.605Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Highlight Lower Than Values"
-tags: []
-description: "Highlight Lower Than Values"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub HighlightLowerThanValues()
       Dim i As Integer
       i = InputBox("Enter Lower Than Value", "Enter Value")
@@ -24,8 +12,4 @@ snippets: [
       .Interior.Color = RGB(217, 83, 79)
       End With
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
