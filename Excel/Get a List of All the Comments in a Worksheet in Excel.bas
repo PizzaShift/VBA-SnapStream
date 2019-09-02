@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T04:10:25.212Z"
-updatedAt: "2019-08-21T04:10:45.471Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Get a List of All the Comments in a Worksheet in Excel"
-tags: [
-  "Comments"
-]
-description: "Get a List of All the Comments in a Worksheet in Excel"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub ExtractComments()
       Dim ExComment As Comment
       Dim i As Integer
@@ -51,8 +37,4 @@ snippets: [
         End If
       Next ExComment
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
