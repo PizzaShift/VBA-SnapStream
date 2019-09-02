@@ -1,21 +1,4 @@
-createdAt: "2019-08-22T07:46:25.728Z"
-updatedAt: "2019-08-22T07:48:27.030Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Finding the English definition of a word in VBA"
-tags: [
-  "definition"
-  "HTTP"
-  "JSON"
-  "Word"
-]
-description: "Finding the English definition of a word in VBA"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Function DefineWord(wordToDefine As String) As String
       	' add a reference to "Microsoft WinHTTP Services". 
         ' Array to hold the response data.
@@ -84,8 +67,4 @@ snippets: [
           DefineWord = newDefinition
       
       End Function
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
