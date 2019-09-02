@@ -1,21 +1,4 @@
-createdAt: "2019-08-22T08:00:58.568Z"
-updatedAt: "2019-08-22T08:03:59.401Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "SQL Functions"
-tags: [
-  "SQL"
-]
-description: '''
-  SQL Functions
-  
-'''
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Private sqlConn As Object
       
       Function OpenSQLConnection()
@@ -121,8 +104,4 @@ snippets: [
           '
           
       End Function
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
