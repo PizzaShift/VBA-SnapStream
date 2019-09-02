@@ -1,16 +1,4 @@
-createdAt: "2019-08-21T02:16:34.699Z"
-updatedAt: "2019-08-21T02:16:42.975Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Print Narrow Margin"
-tags: []
-description: "Print Narrow Margin"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub printNarrowMargin()
       With ActiveSheet.PageSetup
       .LeftMargin= Application
@@ -24,8 +12,4 @@ snippets: [
       ActiveWindow.SelectedSheets.PrintOutCopies:=1, Collate:=True,
       IgnorePrintAreas:=False
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
