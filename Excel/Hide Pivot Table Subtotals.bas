@@ -1,19 +1,4 @@
-createdAt: "2019-08-21T02:29:27.538Z"
-updatedAt: "2019-08-21T02:29:51.516Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Hide Pivot Table Subtotals"
-tags: [
-  "Pivot_Table"
-  "Subtotals"
-]
-description: "Hide Pivot Table Subtotals"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub HideSubtotals()
       Dim pt As PivotTable
       Dim pf As PivotField
@@ -28,8 +13,4 @@ snippets: [
       pf.Subtotals(1) = False
       Next pf
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
