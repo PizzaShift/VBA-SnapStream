@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T03:12:35.599Z"
-updatedAt: "2019-08-21T03:12:55.796Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Word Count from Entire Worksheet"
-tags: [
-  "Word_Count"
-]
-description: "Word Count from Entire Worksheet"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub Word_Count_Worksheet()
       Dim WordCnt As Long
       Dim rng As Range
@@ -29,8 +15,4 @@ snippets: [
       MsgBox "There are total " & Format(WordCnt, "#,##0") & " words
       in the active worksheet"
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
