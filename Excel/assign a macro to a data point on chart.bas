@@ -1,18 +1,4 @@
-createdAt: "2019-08-22T10:15:59.787Z"
-updatedAt: "2019-08-22T10:16:38.356Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "assign a macro to a data point on chart"
-tags: [
-  "chart"
-]
-description: "assign a macro to a data point on chart"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Private Sub Cht_Select(ByVal ElementID As Long, ByVal Arg1 As Long, ByVal Arg2 As Long)
       
       Dim vntData As Variant
@@ -74,8 +60,4 @@ snippets: [
       End If
       
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
