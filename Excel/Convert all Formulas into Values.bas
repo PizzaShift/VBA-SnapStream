@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T03:02:31.719Z"
-updatedAt: "2019-08-21T03:03:28.234Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Convert all Formulas into Values"
-tags: [
-  "Formulas_into_Values"
-]
-description: "Convert all Formulas into Values"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub ConvertToValues()
       Dim MyRange As Range
       Dim MyCell As Range
@@ -30,8 +16,4 @@ snippets: [
       End If
       Next MyCell
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
