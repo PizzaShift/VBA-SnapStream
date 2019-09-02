@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:26:29.538Z"
-updatedAt: "2019-08-21T02:26:50.331Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Active Workbook in an Email"
-tags: [
-  "Workbook_in_an_Email"
-]
-description: "Active Workbook in an Email"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub Send_Mail()
       Dim OutApp As Object
       Dim OutMail As Object
@@ -28,8 +14,4 @@ snippets: [
       Set OutMail = Nothing
       Set OutApp = Nothing
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
