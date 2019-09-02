@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:21:26.387Z"
-updatedAt: "2019-08-21T02:21:38.639Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Sort Worksheets"
-tags: [
-  "Sort_Worksheets"
-]
-description: "Sort Worksheets"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub SortWorksheets()
       Dim i As Integer
       Dim j As Integer
@@ -33,8 +19,4 @@ snippets: [
       Next j
       Next i
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
