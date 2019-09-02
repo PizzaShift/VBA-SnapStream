@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:22:48.811Z"
-updatedAt: "2019-08-21T02:23:03.466Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Delete all Blank Worksheets"
-tags: [
-  "Blank_Worksheets"
-]
-description: "Delete all Blank Worksheets"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub deleteBlankWorksheets()
       Dim Ws As Worksheet
       On Error Resume Next
@@ -26,8 +12,4 @@ snippets: [
       Application.ScreenUpdating= True
       Application.DisplayAlerts= True
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
