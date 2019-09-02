@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:59:29.222Z"
-updatedAt: "2019-08-21T03:00:15.789Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Use Goal Seek"
-tags: [
-  "Goal_Seek"
-]
-description: "Use Goal Seek"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       'Goal Seek can be super helpful for you to solve complex problems.
       'Learn more about goal seek from here before you use this code.
       '[How to use Goal Seek in Excel to Find a Value (Manual + VBA)](https://excelchamps.com/blog/goal-seek/)'
@@ -28,8 +14,4 @@ snippets: [
       Exit Sub
       Errorhandler: MsgBox("Sorry, value is not valid.")
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
