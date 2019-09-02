@@ -1,16 +1,4 @@
-createdAt: "2019-08-21T02:09:20.376Z"
-updatedAt: "2019-08-21T02:09:32.692Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Highlight Specific Text"
-tags: []
-description: "Highlight Specific Text"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub highlightValue()
       Dim myStr As String
       Dim myRg As Range
@@ -47,8 +35,4 @@ snippets: [
       End With
       Next I
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
