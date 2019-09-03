@@ -1,16 +1,4 @@
-createdAt: "2019-08-21T02:17:17.769Z"
-updatedAt: "2019-08-21T02:17:34.296Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Print Custom Pages"
-tags: []
-description: "Print Custom Pages"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub printCustomSelection()
       Dim startpageAs Integer
       Dim endpageAs Integer
@@ -27,8 +15,4 @@ snippets: [
       Selection.PrintOutFrom:=startpage, To:=endpage, Copies:=1
       Collate:=True
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
