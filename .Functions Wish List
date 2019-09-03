@@ -25,6 +25,21 @@
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
 
 'Inerface Design Ideas (Userforms & Userform functions) 
+'Transparent Function
+'Resize window function
+'Remove window trim (create custom interactive [X] Close box and Scroll bar)
+Customizable Scroll Bar (Based on hieght of object/window, highlight apon mouse hover)
+'Function MouseHover: Display Semi transparent moving (tooltip box:Make customizable)
+'Function Tooltip (Boolean Transparent & %, gradient, dropShadow, animated/responsive addins (graphs, loading bar)
+'Function BounceText (Gradient, Bounce sensitivity, highlight/Bounce on mouse hover)
+'Function Circle (Gradient,Dropshadow,Dynamic Size Generate, 
+'Square Image control Function (Auto Generate color gradient based on Base x Height)
+'Function Frame Gradient Control Function (Auto Generate color gradient based on Base x Height)
+'Copy Chart image Function (Worksheet Charts input to Userform)
+'IDEA "Macro AutoGenerate Scripts: Use Premade userform that creates Icons to 'Miniaturize' Pixel grid design to auto-gen image control, Scale options when generating
+'IDEA:Pixel by Pixel Function(Return RGB color match, Duplicate image to image control Generate)
+'Create Custom DropDown menu (Rounded edges, Border Color, Border Size, highlight mousehover)
+'Customizable Font
 
 
 '📓 Macro Ideas™️
