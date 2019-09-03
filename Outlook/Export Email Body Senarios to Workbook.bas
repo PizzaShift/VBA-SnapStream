@@ -1,24 +1,3 @@
-createdAt: "2019-08-21T04:31:10.450Z"
-updatedAt: "2019-08-21T04:31:51.458Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Export Email Body Senarios to Workbook"
-tags: [
-  "Email"
-  "Export"
-  "Senarios"
-  "Outlook"
-]
-description: '''
-  Export Email Body Senarios to Workbook
-  
-'''
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
       Sub CopyToExcel()
       Dim olItem As Outlook.MailItem
       Dim xlApp As Object
@@ -99,8 +78,4 @@ snippets: [
           Set xlWB = Nothing
           Set xlSheet = Nothing
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
