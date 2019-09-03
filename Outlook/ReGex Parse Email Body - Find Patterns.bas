@@ -1,20 +1,3 @@
-createdAt: "2019-08-21T04:20:15.391Z"
-updatedAt: "2019-08-21T04:23:10.296Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "ReGex Parse Email Body - Find Patterns"
-tags: [
-  "Email"
-  "Senarios"
-  "Patterns"
-]
-description: "ReGex Parse Email Body - Find Patterns"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
       '[Use RegEx to extract text from an Outlook email message](https://www.slipstick.com/developer/regex-parse-message-text/)'
       'You'll need to set a reference to the:
       ' "Microsoft VBScript Regular Expressions 5.5" 
@@ -75,8 +58,4 @@ snippets: [
       Set Reg1 = Nothing
            
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
