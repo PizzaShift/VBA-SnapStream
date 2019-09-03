@@ -1,20 +1,4 @@
-createdAt: "2019-08-21T04:45:34.896Z"
-updatedAt: "2019-08-21T04:46:12.979Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Frequency of words found in each selected column"
-tags: [
-  "Frequency_of_words"
-  "Frequency"
-  "Word_Count"
-]
-description: "Frequency of words found in each selected column"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub FrequencyV2() 'Modified from: https://stackoverflow.com/questions/21858874/counting-the-frequencies-of-words-in-excel-strings
       'It determines the frequency of words found in each selected column.
       'Puts results in new worksheets.
@@ -57,8 +41,4 @@ snippets: [
               Next I
           Next col
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
