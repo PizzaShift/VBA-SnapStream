@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:07:25.731Z"
-updatedAt: "2019-08-21T02:07:53.676Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Highlight Top 10 Values"
-tags: [
-  "Highlight_Top"
-]
-description: "Highlight Top 10 Values"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub TopTen()
       Selection.FormatConditions.AddTop10
       Selection.FormatConditions(Selection.FormatConditions.Count).S
@@ -33,8 +19,4 @@ snippets: [
       End With
       Selection.FormatConditions(1).StopIfTrue = False
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
