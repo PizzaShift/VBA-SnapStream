@@ -1,3 +1,4 @@
+'http://unlimitedexcel.blogspot.com/2012/04/jira-excel-tool-data-import-via-vba.html
 Public Sub extractJiraQuery(userName As String, password As String)
  
     Dim MyRequest As New WinHttpRequest
