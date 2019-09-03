@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:30:47.731Z"
-updatedAt: "2019-08-21T02:48:25.597Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Create a Pivot Table"
-tags: [
-  "Create_a_Pivot_Table"
-]
-description: "Create a Pivot Table"
-snippets: [
-  {
-    linesHighlighted: []
-    name: "CreatePivotTable.bas"
-    mode: "VBScript"
-    content: '''
+
       Sub InsertPivotTable()
       'Macro By ExcelChamps
       'https://excelchamps.com/blog/vba-to-create-pivot-table/'
@@ -89,12 +75,8 @@ snippets: [
       ActiveSheet.PivotTables("SalesPivotTable").TableStyle2 = "PivotStyleMedium9"
       
       End Sub
-    '''
-  }
-  {
-    name: "CreatePivotTable2.bas"
-    mode: "VBScript"
-    content: '''
+
+      '------------------------------------------------------------------------------------------------
       Sub InsertPivotTable()
       
       ‘Declare Variables
@@ -154,9 +136,4 @@ snippets: [
       ActiveSheet.PivotTables(“SalesPivotTable”).TableStyle2 = “PivotStyleMedium9”
       
       End Sub
-    '''
-    linesHighlighted: []
-  }
-]
-isStarred: false
-isTrashed: false
+
