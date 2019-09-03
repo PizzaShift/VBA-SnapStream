@@ -1,22 +1,4 @@
-createdAt: "2019-08-21T04:07:00.288Z"
-updatedAt: "2019-08-21T04:13:11.957Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Parts of Speech"
-tags: [
-  "Noun"
-  "Adverb"
-  "Verb"
-  "Adjective"
-  "Pronoun"
-]
-description: "Parts of Speech"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub parts_of_speech()
       
       Set mySynInfo = Selection.Range.SynonymInfo
@@ -115,12 +97,8 @@ snippets: [
       vMeanings = objSynonymInfo.antonymlist
       GetMeanings = UBound(vMeanings) > 0
       End Function
-    '''
-  }
-  {
-    name: "Solution One"
-    mode: "VBScript"
-    content: '''
+
+    'Another Solution
       Option Explicit
        
       Public Sub PartsOfSpeech()
@@ -183,13 +161,8 @@ snippets: [
         Next i
        
       End Sub
-    '''
-    linesHighlighted: []
-  }
-  {
-    name: "Solution Two"
-    mode: "VBScript"
-    content: '''
+
+    'Solution Two"
       Public Sub PartsOfSpeech()
         Application.ScreenUpdating = False
         Dim mObjWord As Word.Application
@@ -239,9 +212,4 @@ snippets: [
         mObjWord.Quit: Set mObjWord = Nothing
         Application.ScreenUpdating = True
       End Sub
-    '''
-    linesHighlighted: []
-  }
-]
-isStarred: false
-isTrashed: false
+
