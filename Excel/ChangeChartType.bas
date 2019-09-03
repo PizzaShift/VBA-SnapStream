@@ -1,27 +1,10 @@
-createdAt: "2019-08-21T02:50:43.935Z"
-updatedAt: "2019-08-21T02:53:19.679Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Change Chart Type"
-tags: [
-  "Chart_Type"
-]
-description: "Change Chart Type"
-snippets: [
-  {
-    linesHighlighted: []
-    name: "ChangeChartType.bas"
-    mode: "VBScript"
-    content: '''
+
       Sub ChangeChartType()
       ActiveChart.ChartType = xlColumnClustered
       End Sub
-    '''
-  }
-  {
+
     name: "Enumerations"
-    mode: "VBScript"
-    content: '''
+
       XlChartType enumeration (Excel)
       '[XlChartType enumeration (Excel) \\| Microsoft Docs](https://docs.microsoft.com/en-us/office/vba/api/Excel.XlChartType)'
       Specifies the chart type.
@@ -99,9 +82,4 @@ snippets: [
       xlXYScatterLinesNoMarkers 	75 	Scatter with Lines and No Data Markers.
       xlXYScatterSmooth 	72 	Scatter with Smoothed Lines.
       xlXYScatterSmoothNoMarkers 	73 	Scatter with Smoothed Lines and No Data Markers.
-    '''
-    linesHighlighted: []
-  }
-]
-isStarred: false
-isTrashed: false
+
