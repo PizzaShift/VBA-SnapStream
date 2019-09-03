@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:55:53.974Z"
-updatedAt: "2019-08-21T02:56:10.465Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Save Selected Range as a PDF"
-tags: [
-  "Range_as_a_PDF"
-]
-description: "Save Selected Range as a PDF"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub HideSubtotals()
       Dim pt As PivotTable
       Dim pf As PivotField
@@ -27,8 +13,4 @@ snippets: [
       pf.Subtotals(1) = False
       Next pf
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
