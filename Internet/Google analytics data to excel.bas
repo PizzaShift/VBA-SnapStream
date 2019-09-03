@@ -1,3 +1,4 @@
+'https://supermetrics.com/blog/excel-functions-for-fetching-google-analytics-data
 Private Function getGAauthenticationToken(ByVal email As String, ByVal password As String)
     Dim authResponse As String
     Dim authTokenStart As Integer
