@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T03:04:14.309Z"
-updatedAt: "2019-08-21T03:04:38.557Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Remove Spaces from Selected Cells"
-tags: [
-  "Remove_Spaces"
-]
-description: "Remove Spaces from Selected Cells"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub RemoveSpaces()
       Dim myRange As Range
       Dim myCell As Range
@@ -30,8 +16,4 @@ snippets: [
       End If
       Next myCell
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
