@@ -1,24 +1,4 @@
-createdAt: "2019-08-22T08:04:24.655Z"
-updatedAt: "2019-08-22T08:19:12.451Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Fuzzy Match By Word Functions Returns %"
-tags: [
-  "Fuzzy_Match"
-  "Word_Match"
-  "Phrase_Match"
-]
-description: '''
-  Fuzzy Match By Word Functions Returns %
-  
-  
-'''
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Function FuzzyMatchByWord(ByVal lsPhrase1 As String, ByVal lsPhrase2 As String, Optional lbStripVowels As Boolean = False, Optional lbDiscardExtra As Boolean = False) As Double
       
       '
@@ -130,12 +110,7 @@ snippets: [
           FuzzyMatchByWord = 100 * (ldMax / liCnt2)
          
       End Function
-    '''
-  }
-  {
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Function FuzzyMatch(Fstr As String, Sstr As String) As Double
           
           Dim L, L1, L2, M, SC, T, R As Integer
@@ -165,13 +140,7 @@ snippets: [
           End If
       
       End Function
-    '''
-    linesHighlighted: []
-  }
-  {
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Option Explicit
       Public Declare Function GetTickCount Lib "kernel32.dll" () As Long
       'To be placed in the Declarations area
@@ -284,13 +253,8 @@ snippets: [
         Fuzzy = (w * o + f) / (w + 1) / d2
       End If
       End Function
-    '''
-    linesHighlighted: []
-  }
-  {
-    name: ""
-    mode: "VBScript"
-    content: '''
+
+      
       Option Explicit
       'Felipe Costa Gualberto suggested this compiler directive that makes the code work with all VBA versions
       #If VBA7 Then
@@ -1419,10 +1383,4 @@ snippets: [
           HotFuzz = (w * o + f) / (w + 1) / d2
         End If
       End Function
-      
-    '''
-    linesHighlighted: []
-  }
-]
-isStarred: false
-isTrashed: false
+
