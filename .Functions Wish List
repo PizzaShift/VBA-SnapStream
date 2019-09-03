@@ -24,7 +24,7 @@
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
 
-'Inerface Design Ideas (Userforms & Userform functions) 
+'Userforms: Designs  & Functions
 'Transparent Function
 'Resize window function
 'Remove window trim (create custom interactive [X] Close box and Scroll bar)
@@ -40,6 +40,10 @@ Customizable Scroll Bar (Based on hieght of object/window, highlight apon mouse 
 'IDEA:Pixel by Pixel Function(Return RGB color match, Duplicate image to image control Generate)
 'Create Custom DropDown menu (Rounded edges, Border Color, Border Size, highlight mousehover)
 'Customizable Font
+
+'FoxitPhantom PDF
+'Utilize OCR, Javascript,
+'
 
 
 '📓 Macro Ideas™️
