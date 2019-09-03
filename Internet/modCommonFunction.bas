@@ -1,3 +1,4 @@
+'http://unlimitedexcel.blogspot.com/2012/04/jira-excel-tool-data-import-via-vba.html
 Option Explicit
  
 Public Function EncodeBase64(text As String) As String
