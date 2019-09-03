@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:48:43.563Z"
-updatedAt: "2019-08-21T02:49:15.419Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Auto Update Pivot Table Range"
-tags: [
-  "Pivot_Table_Range"
-]
-description: "Auto Update Pivot Table Range"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub UpdatePivotTableRange()
       Dim Data_Sheet As Worksheet
       Dim Pivot_Sheet As Worksheet
@@ -44,8 +30,4 @@ snippets: [
       Pivot_Sheet.Activate
       MsgBox "Your Pivot Table is now updated."
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
