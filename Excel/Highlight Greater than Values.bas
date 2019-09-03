@@ -1,16 +1,4 @@
-createdAt: "2019-08-21T02:08:23.515Z"
-updatedAt: "2019-08-21T02:08:34.680Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Highlight Greater than Values"
-tags: []
-description: "Highlight Greater than Values"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub HighlightGreaterThanValues()
       Dim i As Integer
       i = InputBox("Enter Greater Than Value", "Enter Value")
@@ -24,8 +12,4 @@ snippets: [
       .Interior.Color = RGB(31, 218, 154)
       End With
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
