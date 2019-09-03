@@ -1,18 +1,4 @@
-createdAt: "2019-08-21T02:56:20.969Z"
-updatedAt: "2019-08-21T02:56:51.506Z"
-type: "SNIPPET_NOTE"
-folder: "5291b0259dc37fb35510"
-title: "Create a Table of Content"
-tags: [
-  "Table_of_Content"
-]
-description: "Create a Table of Content"
-snippets: [
-  {
-    linesHighlighted: []
-    name: ""
-    mode: "VBScript"
-    content: '''
+
       Sub TableofContent()
       Dim i As Long
       On Error Resume Next
@@ -33,8 +19,4 @@ snippets: [
       End With
       Next i
       End Sub
-    '''
-  }
-]
-isStarred: false
-isTrashed: false
+
