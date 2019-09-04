@@ -35,6 +35,8 @@
 
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
+'Custom OCRFunction: (Use Icon Creator as template, Input image snippet of each Char(), Overlay[0-9][A-Z], Count(PixelOccupied as Boolean), Count(OffsetPixelOccupied as Boolean))
+'{Custom OCRFunction Notes: Like BattleShip Function(Return % Chance(GridX,Y(SenarioSerialString(CheckChar(i)))))}
 
 'Userforms: Designs  & Functions
 'Transparent Function
