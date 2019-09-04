@@ -58,6 +58,9 @@ Customizable Scroll Bar (Based on hieght of object/window, highlight apon mouse 
 
 'Internet/API
 'Function Weather (Return weather, time of day,  click element based on HTMLString)
+'Function Dictionary (Return definition)
+'Function LocationGoogleAPI (Return latitude and Logitude)
+'Function ZipCodeAPI (Return City, State, Time, Timezone)
 
 '📓 Macro Ideas™️
 'Email review request macro: Add Ribbon button to Outlook
