@@ -1,5 +1,9 @@
 'Legend: 🔑={Priority} 💡={Idea} 🔥={New} 📌={Next To Make} 🗃️={Use Exsisting Code} 🔑={Priority} 🤖={Zapier}
          📡={Import/Export} ✔️={Completed}
+ 
+ 'Update:
+ 'Client Function (Also return what color the client is on the activity log, Activity Log Week #, DI Email List Array, Fallout Email List Array)
+         
 'Create
 'Function EmailSimilarity
 'Function EmailConversationTopic
@@ -15,6 +19,8 @@
 'Function ImportJIRADashboard
 'Function ImportJIRAIssues
 'Function ImportConfluenceClientData
+🔥'Function ConfluenceOpenDataInquryEmail (🗃️: Use 'Click-Link' functions in internet dir)
+🔥'Function ConfluenceOpenFalloutEmail (🗃️: Use 'Click-Link' functions in internet dir)
 'Function ConfluenceActivity (monitor updates tl client data)
 'Function FalloutEmail(ClientName) 'Create email
 'Function DataInquiryEmail(ClientName) 'Create email
@@ -23,6 +29,8 @@
 'Function FileConverter (csv,json,delimited,binary,etc)
 'Function FileProperties (Read & Write & create custom variables that can store data in the file properties)
 🔑'Function OutlookWeatherForcastReturnTime (Use this feature in outlook to return current time to time conversion)
+'Function AddNewDataInqury (Use PEGA export, SQL Query to fill in any gaps, Add To Active DI Workbook)
+
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
 
