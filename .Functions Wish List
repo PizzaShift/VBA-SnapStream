@@ -30,6 +30,7 @@
 'Function FileProperties (Read & Write & create custom variables that can store data in the file properties)
 🔑'Function OutlookWeatherForcastReturnTime (Use this feature in outlook to return current time to time conversion)
 'Function AddNewDataInqury (Use PEGA export, SQL Query to fill in any gaps, Add To Active DI Workbook)
+📡🔥'Function PEGAInquryList(🗃️Auto Login Script, 🗃️Copy HTML of Edit Report Page(Insert Clients), 🗃️Use Click Link-Match Phrase to Return results, 🗃️ImportReportResultsHTML)
 
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
