@@ -32,6 +32,8 @@
 'Function AddNewDataInqury (Use PEGA export, SQL Query to fill in any gaps, Add To Active DI Workbook)
 📡🔥'Function PEGAInquryList(🗃️Auto Login Script, 🗃️Copy HTML of Edit Report Page(Insert Clients), 🗃️Use Click Link-Match Phrase to Return results, 🗃️ImportReportResultsHTML)
 💡'Use:'Excel VBA read LabView date time stamp.bas' Function ConversationIndexConverter(Function OutlookWeatherForcastReturnTime or WeatherAPI(Return Time), Weekday Function) As Array
+'Function UpdateModule(ImportFilePath, GitHubRepo as Boolean, InjectChangedRow as Array, AddNotes(InjectChangedRow(i)) as String)
+'Function ImportNewModule(ImportFilePath, GitHubRepo as Boolean, InjectChangedRow as Array)
 
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
