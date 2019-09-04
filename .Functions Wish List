@@ -1,3 +1,5 @@
+'Legend: 🔑={Priority} 💡={Idea} 🔥={New} 📌={Next To Make} 🗃️={Use Exsisting Code} 🔑={Priority} 🤖={Zapier}
+         📡={Import/Export}
 'Create
 'Function EmailSimilarity
 'Function EmailConversationTopic
@@ -20,7 +22,7 @@
 'Function ETLFieldFormatRuleAndErrorChecker
 'Function FileConverter (csv,json,delimited,binary,etc)
 'Function FileProperties (Read & Write & create custom variables that can store data in the file properties)
-
+🔑'Function OutlookWeatherForcastReturnTime (Use this feature in outlook to return current time to time conversion)
 'Project Ideas
 'Plug-n-paste functions to instantly create complex macros, "Macro that makes macro's"
 
