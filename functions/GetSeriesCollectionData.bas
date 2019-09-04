@@ -1,4 +1,5 @@
- Sub GetSeriesCollectionData()
+'http://eng-shady-mohsen.blogspot.com/2014/ 
+Sub GetSeriesCollectionData()
 
 ' Get the formula of the first data series
 SeriesCollectionFormula = Charts("Chart1").SeriesCollection(1).Formula
