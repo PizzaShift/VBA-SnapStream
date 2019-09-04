@@ -13,8 +13,8 @@
 'Function EmailSenarioLogger (Historical look at an email and how it was processed, then log the senario to track)
 'Function EmailSubjectAnalysis (Get all the information possible just using the subject, files, ppt data, statuses, etc)
 'Function OutlookMacroExporter (Export code as text, Export code as bas, Export code to github, Export to zip file)
-'Function OutlookMacroUpdater (Import from text, import from bas, import from github, import from email attaachment)
-'Function OutlookMacroImport
+'(See Row 35)Function OutlookMacroUpdater (Import from text, import from bas, import from github, import from email attaachment)
+'(See Row 36)Function OutlookMacroImport
 'Function OutlookProjectBuilder (Auto import macros and create new tab with ribbon buttons)
 'Function ImportJIRADashboard
 'Function ImportJIRAIssues
