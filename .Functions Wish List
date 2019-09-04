@@ -1,5 +1,5 @@
 'Legend: 🔑={Priority} 💡={Idea} 🔥={New} 📌={Next To Make} 🗃️={Use Exsisting Code} 🔑={Priority} 🤖={Zapier}
-         📡={Import/Export}
+         📡={Import/Export} ✔️={Completed}
 'Create
 'Function EmailSimilarity
 'Function EmailConversationTopic
@@ -38,10 +38,11 @@ Customizable Scroll Bar (Based on hieght of object/window, highlight apon mouse 
 'Square Image control Function (Auto Generate color gradient based on Base x Height)
 'Function Frame Gradient Control Function (Auto Generate color gradient based on Base x Height)
 'Copy Chart image Function (Worksheet Charts input to Userform)
-'IDEA "Macro AutoGenerate Scripts: Use Premade userform that creates Icons to 'Miniaturize' Pixel grid design to auto-gen image control, Scale options when generating
-'IDEA:Pixel by Pixel Function(Return RGB color match, Duplicate image to image control Generate)
+'💡: "Macro AutoGenerate Scripts: Use Premade userform that creates Icons to 'Miniaturize' Pixel grid design to auto-gen image control, Scale options when generating
+'💡: Pixel by Pixel Function(Return RGB color match, Duplicate image to image control Generate)
 'Create Custom DropDown menu (Rounded edges, Border Color, Border Size, highlight mousehover)
-'Customizable Font
+'Customizable Font (Color Change, Gradient, Animation(Bounce), Font, etc.)
+'💡: Duplicate MeisterTask (Use accross all office programs)
 
 'FoxitPhantom PDF
 'Utilize OCR, Javascript,
