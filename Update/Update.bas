@@ -9,7 +9,7 @@ Sub UpdateCode_AndExecute()
 'BypassUpdate = Workbooks("Toolkit.xlam").Sheets(" ").Range("Z3").Value 'FALSE
   'KeepChanges = Workbooks("Toolkit.xlam").Sheets(" ").Range("Z4").Value
   NewUpdate = TRUE
-  NewUpdate = FALSE
+  BypassUpdate = FALSE
 
 'If the update date is older than current day, and a new update is true, or bypass is true then run the update.
   'If UpdateDate = Workbooks("Toolkit.xlam").Sheets(" ").Range("Z1").Value < Date Then
@@ -19,11 +19,11 @@ Sub UpdateCode_AndExecute()
     'Call ListModules
     'Call ListProcedures
     'Get the new code to insert into the addin project within a new Module:
-    Msgbox("New code has now been inserted and exceuted.")
-    'Check complete, new updates have been made.
+    
+    
+    '....Check complete, new updates have been made.
   else
     Workbooks("Toolkit.xlam").Sheets(" ").Range("Z4").Value = FALSE
-    Msgbox("New code has now been exceuted, but not inserted.")
     'Check complete, no new updates.
     End If 
   'End if
