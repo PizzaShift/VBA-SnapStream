@@ -8,7 +8,7 @@ Sub UpdateCode_AndExecute()
 'NewUpdate = Workbooks("Toolkit.xlam").Sheets(" ").Range("Z2").Value 'TRUE
 'BypassUpdate = Workbooks("Toolkit.xlam").Sheets(" ").Range("Z3").Value 'FALSE
   'KeepChanges = Workbooks("Toolkit.xlam").Sheets(" ").Range("Z4").Value
-  NewUpdate = TRUE
+  NewUpdate = FALSE
   BypassUpdate = FALSE
 
 'If the update date is older than current day, and a new update is true, or bypass is true then run the update.
